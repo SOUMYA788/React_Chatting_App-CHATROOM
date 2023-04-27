@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { FiCheck } from "react-icons/fi"
 import { HiOutlineX } from "react-icons/hi"
-import { useCurrentState } from '../Context/context';
+import { useCurrentState } from '../../Context/context';
 
 const Dialog = ({ dialogFor, setShowDialog, setSidePannelContent }) => {
-    const [contactName, setContactName] = useState("")
-    const [{ contacts, masterKey }, dispatch] = useCurrentState()
-
-    useEffect(() => {
-        console.log(contacts);
-        if (masterKey) {
-            let prevUserDetails = JSON.parse(localStorage.getItem(masterKey))
-            localStorage.setItem(masterKey, JSON.stringify({
-                ...prevUserDetails,
-                contacts
-            }))
-        }
-    }, [contacts])
-
+    const [contactName, setContactName] = useState("");
+    const [{ contacts }, dispatch] = useCurrentState()
 
     const manageDialog = () => {
         if (dialogFor === "more") {
@@ -36,7 +24,7 @@ const Dialog = ({ dialogFor, setShowDialog, setSidePannelContent }) => {
                             e.stopPropagation();
                             console.log("click on log out, and handel this...");
                         }}>
-                        Log out
+                        Log out 
                     </li>
                 </ul>
             )
@@ -45,6 +33,7 @@ const Dialog = ({ dialogFor, setShowDialog, setSidePannelContent }) => {
                 <div className="h-full w-full backdrop-blur-sm" >
                     <form className='bg-slate-200 p-2' onSubmit={(e) => {
                         e.preventDefault();
+                        
                         if (!contacts.includes(contactName)) {
                             dispatch({
                                 type: "update_contacts",

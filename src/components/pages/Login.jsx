@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useCurrentState } from '../../../Context/context'
+import { useCurrentState } from '../../Context/context'
 
-const Login = ({ userDetailsKey }) => {
+const Login = ({ webSocket, userDetailsKey }) => {
 
     const [userNameInputValue, setUserNameInputValue] = useState("")
     const [userDetailState, dispatch] = useCurrentState();
@@ -10,6 +10,7 @@ const Login = ({ userDetailsKey }) => {
         e.preventDefault();
         if (userNameInputValue.length > 0) {
             let prevUserDetails = JSON.parse(localStorage.getItem(userDetailsKey))
+            let title = "userName"
             let userLogin = true;
             let userName = userNameInputValue;
             let masterKey = userDetailsKey;
@@ -21,7 +22,7 @@ const Login = ({ userDetailsKey }) => {
 
             dispatch({
                 type: "update_userName",
-                userName: userNameInputValue
+                userName
             })
 
             dispatch({

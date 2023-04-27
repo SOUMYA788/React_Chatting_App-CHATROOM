@@ -29,7 +29,8 @@ function App() {
     <div className="App w-[100%] h-[100dvh] overflow-scroll select-none">
       {
         userDetailsState.userLogin ? <Home /> : <Login userDetailsKey={userDetailsKey} />
-      }    </div>
+      }
+    </div>
   );
 }
 
