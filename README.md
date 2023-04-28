@@ -13,5 +13,9 @@ This project was created with [Create React App](https://github.com/facebook/cre
 • ABOUT CHATROOM
 
 => It's a simple chatroom which uses WebSocket to send messages to any user...
+
 => User can send only text messages here...
-=> to get it's server please download that from here -> 
+
+=> to get it's server please download that from here -> https://github.com/SOUMYA788/React_Chatting_App-CHATROOM_SERVER
+
+=> after getting all this files, start both client's and server's local server, then injoy this project...
