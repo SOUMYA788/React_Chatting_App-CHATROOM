@@ -26,16 +26,22 @@ const Home = () => {
 
 
     useEffect(() => {
-        document.addEventListener('keydown', (evt) => {
+        const handleKeyDown = (evt) => {
             if (evt.key === 'Escape') {
                 setChatWith({
                     contact: null,
                     onlineStatus: null,
                 });
             }
-        })
+        };
 
-    }, [])
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
 
 
     useEffect(() => {
@@ -219,7 +225,7 @@ const Home = () => {
                 }
 
                 <div className="w-[95%] mx-auto h-[calc(100%-80px)] flex flex-1 flex-col items-center overflow-y-scroll scroll-smooth">
-                    {                                   
+                    {
                         allMessages.map(conversations => {
                             let person = conversations[0]
                             let message_list = conversations[1]
@@ -249,7 +255,7 @@ const Home = () => {
                                 userName: chatWith.contact,
                                 senderName: 'me',
                                 senderMessage: inputMessage
-                            } 
+                            }
 
                             dispatch({
                                 type: "update_messages",
